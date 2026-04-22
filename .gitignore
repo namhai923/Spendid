@@ -62,3 +62,5 @@ secrets.json
 *.publishsettings
 *.pubxml
 *.pubxml.user
+
+.containers/
