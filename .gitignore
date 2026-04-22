@@ -1,0 +1,64 @@
+# --- Build Artifacts ---
+[Bb]in/
+[Oo]bj/
+out/
+
+# --- IDE Specific Files (Visual Studio) ---
+.vs/
+*.user
+*.userosscache
+*.sln.docstates
+
+# --- IDE Specific Files (VS Code) ---
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# --- IDE Specific Files (JetBrains Rider) ---
+.idea/
+*.sln.iml
+
+# --- User Secrets & Local Config ---
+secrets.json
+.microsoft.visualstudio.remote.settings.json
+appsettings.Development.json
+appsettings.Local.json
+
+# --- Dependency Folders ---
+node_modules/
+/packages/
+*.nuget.props
+*.nuget.targets
+
+# --- OS Specific Files ---
+.DS_Store
+Thumbs.db
+
+# --- Testing & Coverage ---
+TestResults/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.dll
+*.exe
+*.pdb
+
+# --- Environment Variables ---
+.env
+*.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# --- .NET User Secrets ---
+# (Usually stored in %APPDATA%, but if mapped locally:)
+secrets.json
+
+# --- Azure & Cloud Publishing ---
+*.publishsettings
+*.pubxml
+*.pubxml.user

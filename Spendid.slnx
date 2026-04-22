@@ -1,0 +1,18 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Packages.props" />
+    <File Path="nuget.config" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="Spendid.Api/Spendid.Api.csproj" Id="36333e7e-0150-4f05-81a4-7ee490db5fb4" />
+    <Project Path="Spendid.Application/Spendid.Application.csproj" Id="e4e8a130-10ae-44d3-a28a-1c893be12bda" />
+    <Project Path="Spendid.Domain/Spendid.Domain.csproj" />
+    <Project Path="Spendid.Infrastructure/Spendid.Infrastructure.csproj" Id="32ea2806-7732-4d70-b25e-5580d6c69bd2" />
+  </Folder>
+  <Folder Name="/test/" />
+  <Project Path="docker-compose.dcproj">
+    <Build />
+  </Project>
+</Solution>
