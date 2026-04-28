@@ -5,7 +5,7 @@ using Spendid.Application.Exceptions;
 
 namespace Spendid.Application.Abstractions.Behaviors;
 
-public class ValidationBehavior<TRequest, TResponse>(IEnumerable<IValidator<TRequest>> validators) : IPipelineBehavior<TRequest, TResponse> where TRequest : IBaseCommand
+internal sealed class ValidationBehavior<TRequest, TResponse>(IEnumerable<IValidator<TRequest>> validators) : IPipelineBehavior<TRequest, TResponse> where TRequest : IBaseCommand
 {
     private readonly IEnumerable<IValidator<TRequest>> _validators = validators;
 

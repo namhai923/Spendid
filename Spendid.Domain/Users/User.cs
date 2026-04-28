@@ -1,7 +1,5 @@
 using Spendid.Domain.Abstractions;
-using Spendid.Domain.Households;
 using Spendid.Domain.HouseholdUsers;
-using Spendid.Domain.Users.Events;
 
 namespace Spendid.Domain.Users;
 

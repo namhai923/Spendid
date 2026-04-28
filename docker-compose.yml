@@ -32,3 +32,20 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
+
+  spendid.seq:
+    image: datalust/seq:latest
+    container_name: Spendid.Seq
+    environment:
+      - ACCEPT_EULA=Y
+      - SEQ_FIRSTRUN_NOAUTHENTICATION=true
+    ports:
+      - 5341:5341
+      - 8081:80
+
+  spendid.redis:
+    image: redis:latest
+    container_name: Spendid.Redis
+    restart: always
+    ports:
+      - 6379:6379

@@ -4,8 +4,13 @@ using Scalar.AspNetCore;
 using Spendid.Api.Extensions;
 using Spendid.Application;
 using Spendid.Infrastructure;
+using Serilog;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using HealthChecks.UI.Client;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Host.UseSerilog((context, configuration) => configuration.ReadFrom.Configuration(context.Configuration));
 
 builder.Services.AddControllers();
 
@@ -53,8 +58,6 @@ builder.Services.AddApplication();
 
 builder.Services.AddInfrastructure(builder.Configuration);
 
-builder.Services.AddGoogleAuthentication(builder.Configuration);
-
 builder.Services.AddAuthorization();
 
 var app = builder.Build();
@@ -83,6 +86,10 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseRequestContextLogging();
+
+app.UseSerilogRequestLogging();
+
 app.UseCustomExceptionHandler();
 
 app.UseAuthentication();
@@ -90,5 +97,10 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapHealthChecks("health", new HealthCheckOptions
+{
+    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+});
 
 app.Run();

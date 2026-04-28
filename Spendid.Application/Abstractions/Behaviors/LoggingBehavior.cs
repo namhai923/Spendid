@@ -1,30 +1,44 @@
 using MediatR;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Logging;
+using Serilog.Context;
 using Spendid.Application.Abstractions.Messaging;
+using Spendid.Domain.Abstractions;
 
 namespace Spendid.Application.Abstractions.Behaviors;
 
-public class LoggingBehavior<TRequest, TResponse>(ILogger<TRequest> logger) : IPipelineBehavior<TRequest, TResponse> where TRequest : IBaseCommand
+internal sealed class LoggingBehavior<TRequest, TResponse>(ILogger<LoggingBehavior<TRequest, TResponse>> logger) : IPipelineBehavior<TRequest, TResponse> where TRequest : IBaseRequest where TResponse : Result
 {
-    private readonly ILogger<TRequest> _logger = logger;
+    private readonly ILogger<LoggingBehavior<TRequest, TResponse>> _logger = logger;
 
     public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
     {
-        var commandName = request.GetType().Name;
+        var requestName = request.GetType().Name;
 
         try
         {
-            _logger.LogInformation("Executing command {commandName}", commandName);
+            _logger.LogInformation("Executing request {requestName}", requestName);
 
             var result = await next(cancellationToken);
 
-            _logger.LogInformation("Command {commandName} processed successfully", commandName);
+            if (result.IsSuccess)
+            {
+                _logger.LogInformation("Request {requestName} processed successfully", requestName);
+            }
+            else
+            {
+                using (LogContext.PushProperty("Error", result.Error, true))
+                {
+                    _logger.LogError("Request {requestName} processed with error", requestName);
+                }
+            }
+
 
             return result;
         }
         catch(Exception exception)
         {
-            _logger.LogError(exception, "Command {commandName} processing failed", commandName);
+            _logger.LogError(exception, "Request {requestName} processing failed", requestName);
 
             throw;
         }
