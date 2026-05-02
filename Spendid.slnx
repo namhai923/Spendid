@@ -6,12 +6,18 @@
     <File Path="nuget.config" />
   </Folder>
   <Folder Name="/src/">
-    <Project Path="Spendid.Api/Spendid.Api.csproj" Id="36333e7e-0150-4f05-81a4-7ee490db5fb4" />
-    <Project Path="Spendid.Application/Spendid.Application.csproj" Id="e4e8a130-10ae-44d3-a28a-1c893be12bda" />
-    <Project Path="Spendid.Domain/Spendid.Domain.csproj" />
-    <Project Path="Spendid.Infrastructure/Spendid.Infrastructure.csproj" Id="32ea2806-7732-4d70-b25e-5580d6c69bd2" />
+    <Project Path="src/Spendid.Api/Spendid.Api.csproj" Id="36333e7e-0150-4f05-81a4-7ee490db5fb4" />
+    <Project Path="src/Spendid.Application/Spendid.Application.csproj" Id="e4e8a130-10ae-44d3-a28a-1c893be12bda" />
+    <Project Path="src/Spendid.Domain/Spendid.Domain.csproj" />
+    <Project Path="src/Spendid.Infrastructure/Spendid.Infrastructure.csproj" Id="32ea2806-7732-4d70-b25e-5580d6c69bd2" />
   </Folder>
-  <Folder Name="/test/" />
+  <Folder Name="/test/">
+    <Project Path="test/Spendid.Api.FunctionalTests/Spendid.Api.FunctionalTests.csproj" Id="f7bfa260-7f27-425d-9592-cb672463cecd" />
+    <Project Path="test/Spendid.Application.IntegrationTests/Spendid.Application.IntegrationTests.csproj" Id="769a3c6e-0343-4eb1-86e9-223245712ce9" />
+    <Project Path="test/Spendid.Application.UnitTests/Spendid.Application.UnitTests.csproj" Id="cd40d38e-112d-439f-bfe1-86348a554578" />
+    <Project Path="test/Spendid.ArchitectureTests/Spendid.ArchitectureTests.csproj" Id="b488977d-bc54-433e-a88b-2da7fb124a9c" />
+    <Project Path="test/Spendid.Domain.UnitTests/Spendid.Domain.UnitTests.csproj" Id="7c15be25-5998-4fc2-94a9-f3984effa53d" />
+  </Folder>
   <Project Path="docker-compose.dcproj">
     <Build />
   </Project>
